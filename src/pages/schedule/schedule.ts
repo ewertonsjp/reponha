@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { ModalController, AlertController } from 'ionic-angular';
 import { ScheduleProvider } from '../../providers/schedule-provider';
 import { AudienceProvider } from '../../providers/audience-provider';
+import { SampleModalPage } from '../sample-modal/sample-modal';
 
 @Component({
   selector: 'page-schedule',
@@ -15,6 +17,8 @@ export class SchedulePage {
   turmas;
   selectedTurma;
 
+  selectedEvent;
+
   /** Attributes of Calendar*/
   eventSource;
   viewTitle;
@@ -24,7 +28,7 @@ export class SchedulePage {
       currentDate: new Date()
   };
 
-  constructor(scheduleProvider: ScheduleProvider, audienceProvider: AudienceProvider) {
+  constructor(scheduleProvider: ScheduleProvider, audienceProvider: AudienceProvider, public modalCtrl: ModalController, public alertCtrl: AlertController) {
     this.scheduleProvider = scheduleProvider;
 
     this.turmas = audienceProvider.get();
@@ -41,12 +45,32 @@ export class SchedulePage {
       this.eventSource = this.scheduleProvider.loadEvents(turmaId);
   }
 
+  openModal() {
+    let obj = {modalTitle: 'Confirmação', msgTitle: 'Solicitação de Reserva', msg: 'Deseja solicitar reposição para a data selecionada?'};
+    let myModal = this.modalCtrl.create(SampleModalPage, obj);
+
+    myModal.onDidDismiss(data => {
+      if (data.confirm == true) {
+        this.selectedEvent.title = 'PENDING';
+        let alert = this.alertCtrl.create({
+            title: 'Sucesso!',
+            subTitle: 'Solicitação realizada com sucesso!',
+            buttons: ['OK']
+          });
+        alert.present();
+      }
+    });
+
+    myModal.present();
+  }
+
   onViewTitleChanged(title) {
       this.viewTitle = title;
   }
 
   onEventSelected(event) {
-      console.log('Event selected:' + event.id + '-' + event.startTime + '-' + event.endTime + ',' + event.title);
+      this.selectedEvent = event;
+      this.openModal();
   }
 
   changeMode(mode) {

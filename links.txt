@@ -6,3 +6,6 @@ https://github.com/twinssbc/Ionic2-Calendar
 
 -- SERVICES
 https://www.joshmorony.com/an-in-depth-explanation-of-providers-in-ionic-2/
+
+-- MODAL
+https://alligator.io/ionic/modals/
