@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Calendário</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="has-header">
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>TURMA</ion-label>
+        <ion-select [(ngModel)]="turma">
+          <ion-option value="4info" selected="true">4º ANO - INFO</ion-option>
+          <ion-option value="3info">3º ANO - INFO</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
