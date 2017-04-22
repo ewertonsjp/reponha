@@ -24,14 +24,14 @@ export class ScheduleProvider {
       });
       events.push({
           id: 2,
-          title: 'PENDENTE',
+          title: 'EM ANÁLISE',
           startTime: new Date(2017, 3, 26, 7, 0, 0, 0),
           endTime: new Date(2017, 3, 26, 7, 50, 0, 0),
           allDay: false
       });
     } else {
       events.push({
-        id: 3,        
+        id: 3,
         title: 'LIVRE',
         startTime: new Date(2017, 3, 25, 7, 0, 0, 0),
         endTime: new Date(2017, 3, 25, 7, 50, 0, 0),

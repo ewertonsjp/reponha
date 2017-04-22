@@ -51,7 +51,7 @@ export class SchedulePage {
 
     myModal.onDidDismiss(data => {
       if (data.confirm == true) {
-        this.selectedEvent.title = 'PENDING';
+        this.selectedEvent.title = 'EM ANÁLISE';
         let alert = this.alertCtrl.create({
             title: 'Sucesso!',
             subTitle: 'Solicitação realizada com sucesso!',
