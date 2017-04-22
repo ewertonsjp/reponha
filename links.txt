@@ -1,0 +1,8 @@
+-- links de sucesso!
+
+-- CALENDAR
+http://www.codeexpertz.com/blog/mobile/ionic-2-calendar
+https://github.com/twinssbc/Ionic2-Calendar
+
+-- SERVICES
+https://www.joshmorony.com/an-in-depth-explanation-of-providers-in-ionic-2/

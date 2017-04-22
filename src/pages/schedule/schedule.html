@@ -9,11 +9,35 @@
     <ion-card-content>
       <ion-item>
         <ion-label>TURMA</ion-label>
-        <ion-select [(ngModel)]="turma">
-          <ion-option value="4info" selected="true">4º ANO - INFO</ion-option>
-          <ion-option value="3info">3º ANO - INFO</ion-option>
+        <ion-select [(ngModel)]="selectedTurma" (ngModelChange)="onChangeTurma($event)">
+          <ion-option *ngFor="let turma of turmas" [value]="turma.id">{{turma.nome}}</ion-option>
         </ion-select>
       </ion-item>
     </ion-card-content>
   </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-navbar color="primary">
+          <!-- <ion-title>{{viewTitle}}</ion-title> -->
+          <ion-buttons end>
+              <button ion-button [disabled]="isToday" (click)="today()">Today</button>
+              <button ion-button (click)="changeMode('month')">M</button>
+              <button ion-button (click)="changeMode('week')">W</button>
+              <button ion-button (click)="changeMode('day')">D</button>
+              <button ion-button (click)="loadEvents()">Load Events</button>
+          </ion-buttons>
+      </ion-navbar>
+
+      <calendar [eventSource]="eventSource"
+                [calendarMode]="calendar.mode"
+                [currentDate]="calendar.currentDate"
+                (onCurrentDateChanged)="onCurrentDateChanged($event)"
+                (onEventSelected)="onEventSelected($event)"
+                (onTitleChanged)="onViewTitleChanged($event)"
+                (onTimeSelected)="onTimeSelected($event)"
+                step="30"> </calendar>
+      </ion-card-content>
+    </ion-card>
+
 </ion-content>
