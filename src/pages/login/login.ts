@@ -47,7 +47,7 @@ export class LoginPage {
 
   showLoading() {
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...',
+      content: 'Atualizando horários...',
       dismissOnPageChange: true
     });
     this.loading.present();

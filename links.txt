@@ -9,3 +9,6 @@ https://www.joshmorony.com/an-in-depth-explanation-of-providers-in-ionic-2/
 
 -- MODAL
 https://alligator.io/ionic/modals/
+
+-- LOGIN
+https://devdactic.com/login-ionic-2/

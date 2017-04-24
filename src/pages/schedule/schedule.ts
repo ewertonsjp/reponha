@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, AlertController } from 'ionic-angular';
+import { ModalController, AlertController, Loading, LoadingController } from 'ionic-angular';
 import { ScheduleProvider } from '../../providers/schedule-provider';
 import { AudienceProvider } from '../../providers/audience-provider';
 import { SampleModalPage } from '../sample-modal/sample-modal';
@@ -11,6 +11,8 @@ import { SampleModalPage } from '../sample-modal/sample-modal';
 })
 
 export class SchedulePage {
+
+  loading: Loading;
 
   scheduleProvider;
 
@@ -28,7 +30,7 @@ export class SchedulePage {
       currentDate: new Date()
   };
 
-  constructor(scheduleProvider: ScheduleProvider, audienceProvider: AudienceProvider, public modalCtrl: ModalController, public alertCtrl: AlertController) {
+  constructor(scheduleProvider: ScheduleProvider, audienceProvider: AudienceProvider, public modalCtrl: ModalController, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
     this.scheduleProvider = scheduleProvider;
 
     this.turmas = audienceProvider.get();
@@ -37,8 +39,21 @@ export class SchedulePage {
   }
 
   onChangeTurma(event) {
-    this.calendar.currentDate = new Date();
-    this.loadEvents(this.selectedTurma);
+    /**show loading*/
+    this.loading = this.loadingCtrl.create({
+      content: 'Atualizando horários...',
+      dismissOnPageChange: true
+    });
+
+    this.loading.present().then(() => {
+      /**changing turma*/
+      this.calendar.currentDate = new Date();
+      this.loadEvents(this.selectedTurma);
+
+      /**dismiss loading*/
+      this.loading.dismiss();
+    });
+
   }
 
   loadEvents(turmaId) {
@@ -64,6 +79,7 @@ export class SchedulePage {
     myModal.present();
   }
 
+  /*Methods for Calendar*/
   onViewTitleChanged(title) {
       this.viewTitle = title;
   }
@@ -82,8 +98,7 @@ export class SchedulePage {
   }
 
   onTimeSelected(ev) {
-      console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
-          (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
+      console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' + (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
   }
 
   onCurrentDateChanged(event:Date) {
