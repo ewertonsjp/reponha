@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { FreeWorktimePage } from '../pages/free-worktime/free-worktime';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SampleModalPage } from '../pages/sample-modal/sample-modal';
 
@@ -26,7 +27,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     SampleModalPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    FreeWorktimePage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     SampleModalPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    FreeWorktimePage
   ],
   providers: [
     StatusBar,
