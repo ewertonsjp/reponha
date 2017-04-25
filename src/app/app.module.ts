@@ -11,6 +11,7 @@ import { SchedulePage } from '../pages/schedule/schedule';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { FreeWorktimePage } from '../pages/free-worktime/free-worktime';
+import { SelfSchedulePage } from '../pages/self-schedule/self-schedule';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SampleModalPage } from '../pages/sample-modal/sample-modal';
 
@@ -28,7 +29,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SampleModalPage,
     LoginPage,
     RegisterPage,
-    FreeWorktimePage
+    FreeWorktimePage,
+    SelfSchedulePage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SampleModalPage,
     LoginPage,
     RegisterPage,
-    FreeWorktimePage
+    FreeWorktimePage,
+    SelfSchedulePage
   ],
   providers: [
     StatusBar,

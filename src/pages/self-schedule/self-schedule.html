@@ -1,0 +1,102 @@
+<!--
+  Generated template for the SelfSchedule page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Horário Individual</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-content>
+
+      <ion-item class="positive">
+        <ion-label>TURMA</ion-label>
+        <ion-select [(ngModel)]="selectedTurma" (ngModelChange)="onChangeTurma($event)">
+          <ion-option *ngFor="let turma of turmas" [value]="turma.id">{{turma.nome}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-list no-border>
+        <ion-list-header>
+          SEG
+        </ion-list-header>
+      </ion-list>
+
+      <ion-item (click)="openModal()">
+        <ion-icon name='clock' item-left></ion-icon>
+        <ion-note >
+        07:00 - 07:50
+        </ion-note>
+      </ion-item>
+
+      <ion-item (click)="openModal()">
+        <ion-icon name='clock' item-left></ion-icon>
+        <ion-note>
+          07:50 - 08:40
+        </ion-note>
+      </ion-item>
+
+      <ion-list no-border>
+        <ion-list-header>
+          QUA
+        </ion-list-header>
+      </ion-list>
+
+      <ion-item (click)="openModal()">
+        <ion-icon name='clock' item-left></ion-icon>
+        <ion-note>
+          09:30 - 10:20
+        </ion-note>
+      </ion-item>
+
+      <ion-item (click)="openModal()">
+        <ion-icon name='clock' item-left></ion-icon>
+        <ion-note>
+          11:10 - 12:00
+        </ion-note>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+
+      <ion-list no-border>
+        <ion-list-header>
+          ATENDIMENTO AO ALUNO
+        </ion-list-header>
+      </ion-list>
+
+      <ion-item (click)="openModal()">
+        <ion-icon name='warning' item-left></ion-icon>
+        <ion-note>
+          QUA | 09:30 - 10:20
+        </ion-note>
+      </ion-item>
+
+      <ion-item (click)="openModal()">
+        <ion-icon name='warning' item-left></ion-icon>
+        <ion-note>
+          QUA | 10:30 - 11:20
+        </ion-note>
+      </ion-item>
+
+      <ion-item (click)="openModal()">
+        <ion-icon name='warning' item-left></ion-icon>
+        <ion-note>
+          QUA | 10:30 - 11:20
+        </ion-note>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
