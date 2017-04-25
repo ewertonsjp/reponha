@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Loading, LoadingController, ModalController, AlertController } from 'ionic-angular';
 import { AudienceProvider } from '../../providers/audience-provider';
+import { SampleModalPage } from '../sample-modal/sample-modal';
 
 /**
  * Generated class for the FreeWorktime page.
@@ -22,7 +23,9 @@ export class FreeWorktimePage {
   turmas;
   selectedTurma;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public audienceProvider: AudienceProvider) {
+  selectedEvent;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public audienceProvider: AudienceProvider, public modalCtrl: ModalController, public alertCtrl: AlertController) {
     this.turmas = audienceProvider.get();
     this.selectedTurma = this.turmas[0].id;
   }
@@ -47,6 +50,25 @@ export class FreeWorktimePage {
       this.loading.dismiss();
     });
 
+  }
+
+  openModal() {
+    let obj = {modalTitle: 'Confirmação', msgTitle: 'Solicitação de Reserva', msg: 'Deseja solicitar reposição para a data selecionada?'};
+    let myModal = this.modalCtrl.create(SampleModalPage, obj);
+
+    myModal.onDidDismiss(data => {
+      if (data.confirm == true) {
+        // this.selectedEvent.title = 'EM ANÁLISE';
+        let alert = this.alertCtrl.create({
+          title: 'Sucesso!',
+          subTitle: 'Solicitação realizada com sucesso!',
+          buttons: ['OK']
+        });
+        alert.present();
+      }
+    });
+
+    myModal.present();
   }
 
 }
